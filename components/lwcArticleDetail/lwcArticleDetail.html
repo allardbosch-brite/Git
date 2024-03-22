@@ -1,0 +1,33 @@
+<template> 
+
+  <div class="spinner">
+    <template if:true={isLoading}>
+         <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+         </lightning-spinner>
+    </template>
+</div>
+
+<lightning-button
+lwc:if={articleDetailPage}
+variant = "base"
+label = "&#60;:{label.allarticleslabel}"
+onclick = {handleBackNav}
+class = "category-action">
+</lightning-button>
+
+
+    <h2 class="dxp-text-heading-medium">{title}</h2>
+    <p class="dxp-text-body opacity--60 margin-top--sm">
+      {label.lastmodifiedLabel}:&nbsp;
+      <lightning-formatted-date-time value={lastmodifieddate} year="numeric" day="2-digit" month="long" time-zone="UTC">
+      </lightning-formatted-date-time>
+    </p>
+    <!--
+    <p lwc:if = {articleDetailPage} class="dxp-text-body margin-top--md">
+      {articleContent}
+    </p>
+    -->
+    <lightning-formatted-rich-text lwc:if={articleDetailPage} class="dxp-text-body margin-top--md" value={articleContent}>
+    </lightning-formatted-rich-text>
+
+  </template>
